@@ -1,0 +1,104 @@
+{
+  "name": "PopDarts Championship",
+  "short_name": "PopDarts",
+  "description": "Live multi-device dart scoring with real-time sync",
+  "start_url": "./index.html",
+  "scope": "./",
+  "id": "popdarts-championship",
+  "display": "standalone",
+  "display_override": ["standalone", "fullscreen"],
+  "orientation": "any",
+  "background_color": "#0d0d1a",
+  "theme_color": "#0d0d1a",
+  "categories": ["games", "sports", "entertainment"],
+  "lang": "en",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "./icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "PopDarts Home Screen"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Play Next Game",
+      "short_name": "Play",
+      "description": "Start the next scheduled game",
+      "url": "./index.html?action=play",
+      "icons": [{ "src": "./icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Quick Match",
+      "short_name": "Quick",
+      "description": "Start a casual game",
+      "url": "./index.html?action=quick",
+      "icons": [{ "src": "./icon-96.png", "sizes": "96x96" }]
+    }
+  ]
+}
