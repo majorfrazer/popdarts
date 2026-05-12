@@ -24,6 +24,7 @@
       --green: #00d68f;
       --red: #ff4757;
       --blue: #3b82f6;
+      --white: #ffffff;
       --text: #fff;
       --text-muted: #888;
       --safe-top: env(safe-area-inset-top, 0px);
@@ -34,14 +35,11 @@
     html, body { height: 100%; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow: hidden; }
 
     /* =========================================
-       RESPONSIVE LOGIC (The Fix)
+       RESPONSIVE LOGIC
        ========================================= */
-    
-    /* Default: Mobile View (Phone, Tablet, Rotated Phone) */
     .mobile-wrapper { display: flex; flex-direction: column; height: 100%; width: 100%; }
     .desktop-wrapper { display: none; }
 
-    /* Desktop View: Only triggers on wide screens that have a mouse (hover) capability. */
     @media (min-width: 1024px) and (hover: hover) {
       .mobile-wrapper { display: none; }
       .desktop-wrapper { display: grid; grid-template-columns: 280px 1fr 300px; height: 100vh; }
@@ -82,7 +80,6 @@
     @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
     .content { flex: 1; overflow-y: auto; padding: 16px; padding-bottom: 100px; }
-    
     .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 20px; margin-bottom: 16px; }
     
     .btn {
@@ -95,6 +92,10 @@
     .btn-green { background: var(--green); color: #000; }
     .btn-gray { background: var(--bg-elevated); color: #fff; border: 1px solid var(--border); }
     .btn-red { background: rgba(255, 71, 87, 0.2); color: var(--red); border: 1px solid var(--red); }
+
+    /* Forms */
+    .p-input { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-elevated); color: #fff; font-family: inherit; font-size: 14px; }
+    .p-select { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-elevated); color: #fff; font-family: inherit; font-size: 14px; appearance: none; }
 
     /* --- MOBILE HOME --- */
     .hero {
@@ -122,16 +123,16 @@
     .nav-btn span { display: block; font-size: 24px; margin-bottom: 4px; }
     .nav-btn.active { color: var(--gold); }
 
-    /* --- GAME SCREEN (Vertical Split) --- */
+    /* --- GAME SCREEN --- */
     .game-arena { display: flex; flex-direction: column; height: 100%; }
-    .p-zone { flex: 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; transition: background 0.3s; }
+    .p-zone { flex: 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; transition: background 0.3s; color: #fff; }
     .p-zone.top { border-bottom: 4px solid rgba(0,0,0,0.5); }
     
-    .p-score { font-size: 90px; font-weight: 900; line-height: 1; z-index: 2; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-    .p-name { font-size: 20px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; z-index: 2; }
+    .p-score { font-size: 90px; font-weight: 900; line-height: 1; z-index: 2; text-shadow: 0 4px 20px rgba(0,0,0,0.8); }
+    .p-name { font-size: 20px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; z-index: 2; text-shadow: 0 2px 10px rgba(0,0,0,0.8); text-align: center;}
     
     .controls { display: flex; gap: 20px; align-items: center; z-index: 2; margin-top: 10px; }
-    .c-btn { width: 60px; height: 60px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.3); color: #fff; font-size: 30px; cursor: pointer; }
+    .c-btn { width: 60px; height: 60px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.4); color: #fff; font-size: 30px; cursor: pointer; backdrop-filter: blur(5px); }
     .c-btn:active { background: rgba(255,255,255,0.2); transform: scale(0.9); }
 
     /* Progress Fill */
@@ -139,7 +140,7 @@
     .top .fill-bar { bottom: auto; top: 0; }
 
     .game-hud { position: absolute; top: var(--safe-top); left: 0; right: 0; padding: 10px; display: flex; justify-content: space-between; pointer-events: none; z-index: 10; }
-    .hud-btn { pointer-events: auto; background: rgba(0,0,0,0.6); padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 12px; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; }
+    .hud-btn { pointer-events: auto; background: rgba(0,0,0,0.6); padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 12px; border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer; backdrop-filter: blur(5px); }
 
     /* --- DESKTOP LAYOUT --- */
     .d-sidebar { background: var(--bg-card); border-right: 1px solid var(--border); overflow-y: auto; padding: 20px; }
@@ -151,13 +152,14 @@
 
     /* --- DART SELECTOR --- */
     .dart-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 20px; }
-    .dart-opt { height: 100px; border-radius: 16px; border: 2px solid var(--border); cursor: pointer; }
+    .dart-opt { height: 100px; border-radius: 16px; border: 2px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
     .dart-opt.selected { border-color: var(--gold); box-shadow: 0 0 15px rgba(245,166,35,0.3); }
 
   </style>
 </head>
 <body>
 
+  <!-- MOBILE VIEW -->
   <div class="mobile-wrapper" id="mobile-view">
     <div class="header">
       <div class="logo">🎯 PopDarts</div>
@@ -176,14 +178,19 @@
         <button class="btn btn-gold" style="width:auto; margin-top:15px; padding: 10px 30px;" onclick="playNext()">Play Next Game ▶</button>
       </div>
 
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:20px;">
-        <div class="card" style="text-align:center; padding:15px; margin:0;" onclick="showDartPick('Custom', 'Guest')">
+      <!-- Updated Grid for 3 Options -->
+      <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:8px; margin-bottom:20px;">
+        <div class="card" style="text-align:center; padding:15px 5px; margin:0;" onclick="showDartPick('Custom', 'Guest')">
           <div style="font-size:24px; margin-bottom:5px;">🎮</div>
-          <div style="font-size:12px; font-weight:700;">Quick Match</div>
+          <div style="font-size:11px; font-weight:700;">1v1 Match</div>
         </div>
-        <div class="card" style="text-align:center; padding:15px; margin:0;" onclick="showSettings()">
+        <div class="card" style="text-align:center; padding:15px 5px; margin:0; border-color:var(--gold);" onclick="openPairsSetup()">
+          <div style="font-size:24px; margin-bottom:5px;">👯</div>
+          <div style="font-size:11px; font-weight:700; color:var(--gold)">Pairs Event</div>
+        </div>
+        <div class="card" style="text-align:center; padding:15px 5px; margin:0;" onclick="showSettings()">
           <div style="font-size:24px; margin-bottom:5px;">⚙️</div>
-          <div style="font-size:12px; font-weight:700;">Settings</div>
+          <div style="font-size:11px; font-weight:700;">Settings</div>
         </div>
       </div>
 
@@ -199,6 +206,7 @@
     </div>
   </div>
 
+  <!-- DESKTOP VIEW -->
   <div class="desktop-wrapper">
     <div class="d-sidebar">
       <h3 style="margin-bottom:20px;">👥 Players</h3>
@@ -236,6 +244,7 @@
     </div>
   </div>
 
+  <!-- REGULAR DART PICKER -->
   <div id="screen-darts" class="overlay-screen">
     <div class="header">
       <div class="logo">Pick Darts</div>
@@ -248,6 +257,38 @@
     </div>
   </div>
 
+  <!-- SPECIAL EVENT PAIRS SETUP -->
+  <div id="screen-pairs" class="overlay-screen">
+    <div class="header">
+      <div class="logo">Pairs Event Setup</div>
+      <button class="hud-btn" onclick="closeOverlay()">Cancel</button>
+    </div>
+    <div class="content">
+      <p style="text-align:center; margin-bottom:20px; color:var(--text-muted); font-size:14px;">First to 69 Wins. Does not record to All-Time Stats.</p>
+      
+      <div class="card" style="border-color: rgba(255,255,255,0.2);">
+        <h3 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><span style="width:12px; height:12px; border-radius:50%; background:var(--gold);"></span> Team 1</h3>
+        <input type="text" id="pt1-name1" placeholder="Player 1 Name" class="p-input">
+        <select id="pt1-c1" class="p-select"></select>
+        
+        <input type="text" id="pt1-name2" placeholder="Player 2 Name" class="p-input">
+        <select id="pt1-c2" class="p-select"></select>
+      </div>
+
+      <div class="card" style="border-color: rgba(255,255,255,0.2);">
+        <h3 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><span style="width:12px; height:12px; border-radius:50%; background:var(--blue);"></span> Team 2</h3>
+        <input type="text" id="pt2-name1" placeholder="Player 3 Name" class="p-input">
+        <select id="pt2-c1" class="p-select"></select>
+        
+        <input type="text" id="pt2-name2" placeholder="Player 4 Name" class="p-input">
+        <select id="pt2-c2" class="p-select"></select>
+      </div>
+      
+      <button class="btn btn-gold" onclick="startPairsGame()">Start Event (1st to 69)</button>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
   <div id="screen-game" class="overlay-screen">
     <div class="game-hud">
       <button class="hud-btn" onclick="pauseGame()">⏸ Pause / Exit</button>
@@ -261,7 +302,7 @@
         <div class="p-score" id="score-1">0</div>
         <div class="controls">
           <button class="c-btn" onclick="score(1, -1)">-</button>
-          <button class="c-btn" style="border-color:var(--green); background:rgba(0,255,0,0.1)" onclick="score(1, 1)">+</button>
+          <button class="c-btn" style="border-color:var(--green); background:rgba(0,255,0,0.15)" onclick="score(1, 1)">+</button>
           <button class="c-btn" style="font-size:16px; font-weight:700" onclick="score(1, 2)">+2</button>
           <button class="c-btn" style="font-size:16px; font-weight:700" onclick="score(1, 3)">+3</button>
         </div>
@@ -273,7 +314,7 @@
         <div class="p-score" id="score-2">0</div>
         <div class="controls">
           <button class="c-btn" onclick="score(2, -1)">-</button>
-          <button class="c-btn" style="border-color:var(--green); background:rgba(0,255,0,0.1)" onclick="score(2, 1)">+</button>
+          <button class="c-btn" style="border-color:var(--green); background:rgba(0,255,0,0.15)" onclick="score(2, 1)">+</button>
           <button class="c-btn" style="font-size:16px; font-weight:700" onclick="score(2, 2)">+2</button>
           <button class="c-btn" style="font-size:16px; font-weight:700" onclick="score(2, 3)">+3</button>
         </div>
@@ -281,6 +322,7 @@
     </div>
   </div>
 
+  <!-- SETTINGS -->
   <div id="screen-settings" class="overlay-screen">
     <div class="header">
       <div class="logo">Settings</div>
@@ -289,17 +331,18 @@
     <div class="content">
       <div class="card">
         <h3>Players</h3>
-        <input type="text" id="set-add-player" placeholder="Enter Name" style="width:100%; padding:10px; margin:10px 0; border-radius:8px; border:none;">
+        <input type="text" id="set-add-player" placeholder="Enter Name" class="p-input" style="margin-top:10px;">
         <button class="btn btn-green" onclick="addPlayerSettings()">Add Player</button>
         <div id="set-player-list" style="margin-top:10px; opacity:0.7;"></div>
       </div>
       <div class="card">
         <h3>Game Options</h3>
-        <p>Target Score</p>
-        <select id="set-target" onchange="saveTarget()" style="width:100%; padding:10px; border-radius:8px;">
+        <p style="margin-bottom:8px; font-size:14px; color:var(--text-muted)">Target Score</p>
+        <select id="set-target" onchange="saveTarget()" class="p-select">
           <option value="15">15</option>
           <option value="21">21</option>
           <option value="31">31</option>
+          <option value="69">69 (Drop Double)</option> <!-- Added 69 -->
         </select>
         <br><br>
         <button class="btn btn-red" onclick="clearEvent()">⚠ Reset Championship</button>
@@ -311,29 +354,31 @@
 // ===========================================
 // CONFIGURATION
 // ===========================================
-// NEW API URL UPDATED HERE:
 const API_URL = 'https://script.google.com/macros/s/AKfycby5b5Ucri4ZvRxrFZnWLEpZsf1moXQV1X2pCZotLOriQFTi0k0i718LUlwT285FCxQTLw/exec';
 const SPREADSHEET_URL = 'https://docs.google.com/spreadsheets/d/1Y6B_jUO_EWiqSKUB2Z6pYCwqI4TDZDirbQ3fgZcPphA/edit';
 
+// Added White Dart Option
 const DARTS = [
   {id:'grn', color:'#00d68f', name:'Green'},
   {id:'org', color:'#f5a623', name:'Orange'},
   {id:'blu', color:'#3b82f6', name:'Blue'},
   {id:'pur', color:'#a855f7', name:'Purple'},
-  {id:'red', color:'#ff4757', name:'Red'}
+  {id:'red', color:'#ff4757', name:'Red'},
+  {id:'wht', color:'#ffffff', name:'White'}
 ];
 
 // STATE
 let Data = { players:[], draw:[], stats:[], target:21, live:null };
-let Game = { active:false, p1:'', p2:'', s1:0, s2:0, c1:DARTS[0], c2:DARTS[1], id:null };
+let Game = { active:false, isPairs:false, target:21, p1:'', p2:'', s1:0, s2:0, c1:DARTS[0], c2:DARTS[1], id:null };
 let liveTimer = null;
 
 // ===========================================
 // INITIALIZATION
 // ===========================================
 window.onload = () => {
+  document.getElementById('set-target').value = Data.target;
   doSync();
-  setInterval(doSync, 10000); // Background sync every 10s
+  setInterval(doSync, 10000);
 };
 
 // ===========================================
@@ -357,23 +402,18 @@ async function apiCall(action, payload=null) {
 }
 
 async function doSync() {
-  // 1. Get Players
   let r = await apiCall('players');
   if(r.success) Data.players = r.data.players || [];
   
-  // 2. Get Draw
   r = await apiCall('draw');
   if(r.success) Data.draw = r.data.games || [];
   
-  // 3. Get Stats
   r = await apiCall('stats');
   if(r.success) Data.stats = r.data.stats || [];
 
-  // 4. Check Live Game
   r = await apiCall('liveGame');
   if(r.success && r.data.active) {
     Data.live = r.data;
-    // If I am not playing but looking at dashboard, update live view
     if(!Game.active) updateLiveBanners();
   } else {
     Data.live = null;
@@ -399,7 +439,6 @@ function renderAll() {
 }
 
 function renderHome() {
-  // Next Game Logic
   const next = Data.draw.find(g => !g.winner);
   const txt = next ? `${next.player1} vs ${next.player2}` : (Data.draw.length ? 'Championship Complete' : 'No Games Scheduled');
   const tag = next ? (next.gameNum === 'GF' ? '🏆 Grand Final' : `Game ${next.gameNum}`) : 'Status';
@@ -407,7 +446,6 @@ function renderHome() {
   document.getElementById('m-hero-tag').innerText = tag;
   document.getElementById('m-hero-txt').innerText = txt;
   
-  // Standings
   const html = (Data.stats || [])
     .sort((a,b) => b.wins - a.wins || b.pointsDiff - a.pointsDiff)
     .map((s,i) => `<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:13px;">
@@ -418,11 +456,9 @@ function renderHome() {
 }
 
 function renderDesktop() {
-  // Player List
   const pl = (Data.players || []).map(p => `<div class="d-list-item"><span>${p}</span></div>`).join('');
   document.getElementById('d-player-list').innerHTML = pl;
   
-  // Draw List
   const dl = (Data.draw || []).map(g => `<div class="d-list-item" style="opacity:${g.winner?0.5:1}">
     <span style="font-weight:700; color:var(--gold); width:30px;">${g.gameNum}</span>
     <span style="flex:1">${g.player1} vs ${g.player2}</span>
@@ -430,12 +466,10 @@ function renderDesktop() {
   </div>`).join('');
   document.getElementById('d-draw-list').innerHTML = dl;
   
-  // Desktop Main
   const next = Data.draw.find(g => !g.winner);
   document.getElementById('d-hero-tag').innerText = next ? `Up Next: Game ${next.gameNum}` : 'Event Finished';
   document.getElementById('d-hero-txt').innerText = next ? `${next.player1} vs ${next.player2}` : 'All games complete';
   
-  // Right Standings
   const sl = (Data.stats || []).sort((a,b) => b.wins - a.wins).map(s => 
     `<div class="d-list-item"><span>${s.name}</span><strong>${s.wins} W</strong></div>`
   ).join('');
@@ -446,9 +480,9 @@ function updateLiveBanners() {
   const html = Data.live ? `
     <div class="live-banner" onclick="watchLive()">
       <div style="font-size:10px; font-weight:800; color:var(--green); margin-bottom:5px;">🔴 LIVE GAME IN PROGRESS</div>
-      <div style="font-size:18px; font-weight:700;">${Data.live.player1} vs ${Data.live.player2}</div>
+      <div style="font-size:18px; font-weight:700;">${Data.live.player1} <span style="font-size:12px; opacity:0.7">vs</span> ${Data.live.player2}</div>
       <div style="font-size:32px; font-weight:900; color:var(--gold);">${Data.live.score1} - ${Data.live.score2}</div>
-      <div style="font-size:11px; margin-top:5px; text-decoration:underline;">Click to Watch/Score</div>
+      <div style="font-size:11px; margin-top:5px; text-decoration:underline;">Click to Watch</div>
     </div>` : '';
   
   document.getElementById('m-live-zone').innerHTML = html;
@@ -470,8 +504,6 @@ function playNext() {
 
 function showDartPick(p1, p2, id) {
   Game.p1 = p1; Game.p2 = p2; Game.id = id;
-  
-  // Step 1: Pick P1 color
   document.getElementById('screen-darts').classList.add('active');
   document.getElementById('dart-pick-name').innerText = p1;
   renderDartGrid(1);
@@ -479,11 +511,10 @@ function showDartPick(p1, p2, id) {
 
 function renderDartGrid(playerNum) {
   const grid = document.getElementById('dart-list');
-  // NOTE: Added quotes around d.id to fix potential string errors
   grid.innerHTML = DARTS.map(d => `
     <div class="dart-opt" style="background:linear-gradient(135deg, ${d.color} 0%, transparent 100%)" 
          onclick="selectColor(${playerNum}, '${d.id}')">
-      <div style="padding:10px; font-weight:700;">${d.name}</div>
+      <div style="padding:10px; font-weight:900; font-size:18px;">${d.name}</div>
     </div>
   `).join('');
 }
@@ -492,7 +523,6 @@ function selectColor(playerNum, colorId) {
   const c = DARTS.find(x => x.id === colorId);
   if(playerNum === 1) {
     Game.c1 = c;
-    // Move to P2
     document.getElementById('dart-pick-name').innerText = Game.p2;
     renderDartGrid(2);
   } else {
@@ -502,20 +532,89 @@ function selectColor(playerNum, colorId) {
   }
 }
 
+// REGULAR GAME
 function startGame() {
+  Game.isPairs = false;
+  Game.target = Data.target;
   Game.s1 = 0; Game.s2 = 0; Game.active = true;
   
-  // Setup UI
   document.getElementById('screen-game').classList.add('active');
   document.getElementById('name-1').innerText = Game.p1;
   document.getElementById('name-2').innerText = Game.p2;
+  document.getElementById('g-target').innerText = Game.target;
+
+  // Set single color backgrounds
   document.getElementById('zone-1').style.color = Game.c1.color;
   document.getElementById('zone-2').style.color = Game.c2.color;
+  document.getElementById('bar-1').style.background = 'currentColor';
+  document.getElementById('bar-2').style.background = 'currentColor';
+  document.getElementById('bar-1').style.opacity = '0.2';
+  document.getElementById('bar-2').style.opacity = '0.2';
+
   updateScoreUI();
 
-  // API Live
   apiCall('updateLiveGame', {
-    active:true, gameId:Game.id, player1:Game.p1, player2:Game.p2, score1:0, score2:0, target:Data.target
+    active:true, gameId:Game.id, player1:Game.p1, player2:Game.p2, score1:0, score2:0, target:Game.target
+  });
+}
+
+// PAIRS FEATURE LOGIC
+function openPairsSetup() {
+  document.getElementById('screen-pairs').classList.add('active');
+  let opts = DARTS.map(d => `<option value="${d.id}">${d.name}</option>`).join('');
+  
+  ['pt1-c1', 'pt1-c2', 'pt2-c1', 'pt2-c2'].forEach(id => {
+      document.getElementById(id).innerHTML = opts;
+  });
+  
+  // Set different default dropdown selections
+  document.getElementById('pt1-c1').selectedIndex = 0;
+  document.getElementById('pt1-c2').selectedIndex = 1;
+  document.getElementById('pt2-c1').selectedIndex = 2;
+  document.getElementById('pt2-c2').selectedIndex = 3;
+}
+
+function startPairsGame() {
+  Game.isPairs = true;
+  Game.target = 69; // Strictly 1st to 69
+  Game.s1 = 0; Game.s2 = 0; Game.active = true;
+
+  // Combine Names
+  let p1n1 = document.getElementById('pt1-name1').value || 'P1';
+  let p1n2 = document.getElementById('pt1-name2').value || 'P2';
+  let p2n1 = document.getElementById('pt2-name1').value || 'P3';
+  let p2n2 = document.getElementById('pt2-name2').value || 'P4';
+  
+  Game.p1 = `${p1n1} & ${p1n2}`;
+  Game.p2 = `${p2n1} & ${p2n2}`;
+  Game.id = 'SPECIAL_PAIRS';
+
+  // Extract Colors
+  let t1c1 = DARTS.find(d => d.id === document.getElementById('pt1-c1').value);
+  let t1c2 = DARTS.find(d => d.id === document.getElementById('pt1-c2').value);
+  let t2c1 = DARTS.find(d => d.id === document.getElementById('pt2-c1').value);
+  let t2c2 = DARTS.find(d => d.id === document.getElementById('pt2-c2').value);
+
+  closeOverlay();
+  document.getElementById('screen-game').classList.add('active');
+  
+  document.getElementById('name-1').innerText = Game.p1;
+  document.getElementById('name-2').innerText = Game.p2;
+  document.getElementById('g-target').innerText = Game.target;
+
+  // Apply Blended Gradients overriding `currentColor`
+  document.getElementById('zone-1').style.color = '#fff';
+  document.getElementById('zone-2').style.color = '#fff';
+  document.getElementById('bar-1').style.background = `linear-gradient(90deg, ${t1c1.color}, ${t1c2.color})`;
+  document.getElementById('bar-2').style.background = `linear-gradient(90deg, ${t2c1.color}, ${t2c2.color})`;
+  document.getElementById('bar-1').style.opacity = '0.4';
+  document.getElementById('bar-2').style.opacity = '0.4';
+
+  updateScoreUI();
+
+  // Push to Live View for spectators (Will show names, target 69, default colors for them)
+  apiCall('updateLiveGame', {
+    active:true, gameId:Game.id, player1:Game.p1, player2:Game.p2, score1:0, score2:0, target:Game.target
   });
 }
 
@@ -525,13 +624,20 @@ function watchLive() {
   Game.p2 = Data.live.player2;
   Game.s1 = Data.live.score1;
   Game.s2 = Data.live.score2;
-  // Defaults colors for watchers
-  Game.c1 = DARTS[0]; Game.c2 = DARTS[1]; 
-  Game.active = false; // Watching, not hosting
+  Game.target = Data.live.target || Data.target;
+  Game.active = false; 
   
   document.getElementById('screen-game').classList.add('active');
   document.getElementById('name-1').innerText = Game.p1;
   document.getElementById('name-2').innerText = Game.p2;
+  document.getElementById('g-target').innerText = Game.target;
+
+  // Spectator default generic styling
+  document.getElementById('zone-1').style.color = DARTS[0].color;
+  document.getElementById('zone-2').style.color = DARTS[2].color;
+  document.getElementById('bar-1').style.background = 'currentColor';
+  document.getElementById('bar-2').style.background = 'currentColor';
+  
   updateScoreUI();
 }
 
@@ -541,22 +647,28 @@ function score(p, amt) {
   
   updateScoreUI();
   
-  // Sync Live
   if(Game.active) {
     apiCall('updateLiveGame', {
-      active:true, gameId:Game.id, player1:Game.p1, player2:Game.p2, score1:Game.s1, score2:Game.s2
+      active:true, gameId:Game.id, player1:Game.p1, player2:Game.p2, score1:Game.s1, score2:Game.s2, target:Game.target
     });
   }
 
   // Win Check
-  const target = Data.target;
-  if(Game.s1 >= target || Game.s2 >= target) {
+  if(Game.s1 >= Game.target || Game.s2 >= Game.target) {
     setTimeout(() => {
-      if(confirm('Game Over! Save Result?')) {
-        apiCall('submitGame', {gameId:Game.id, player1:Game.p1, player2:Game.p2, score1:Game.s1, score2:Game.s2});
-        apiCall('clearLiveGame');
-        closeOverlay();
-        doSync();
+      if (Game.isPairs) {
+         // Feature match doesn't hit stats logic
+         alert(`PAIRS MATCH COMPLETE!\n\n${Game.s1 >= Game.target ? Game.p1 : Game.p2} WINS!`);
+         apiCall('clearLiveGame');
+         closeOverlay();
+      } else {
+         // Regular logic
+         if(confirm('Game Over! Save Result to Stats?')) {
+           apiCall('submitGame', {gameId:Game.id, player1:Game.p1, player2:Game.p2, score1:Game.s1, score2:Game.s2});
+           apiCall('clearLiveGame');
+           closeOverlay();
+           doSync();
+         }
       }
     }, 200);
   }
@@ -566,8 +678,8 @@ function updateScoreUI() {
   document.getElementById('score-1').innerText = Game.s1;
   document.getElementById('score-2').innerText = Game.s2;
   
-  const p1 = Math.min(100, (Game.s1/Data.target)*100);
-  const p2 = Math.min(100, (Game.s2/Data.target)*100);
+  const p1 = Math.min(100, (Game.s1/Game.target)*100);
+  const p2 = Math.min(100, (Game.s2/Game.target)*100);
   
   document.getElementById('bar-1').style.height = p1 + '%';
   document.getElementById('bar-2').style.height = p2 + '%';
