@@ -1,7 +1,7 @@
 {
   "name": "PopDarts Championship",
   "short_name": "PopDarts",
-  "description": "Live multi-device dart scoring with real-time sync",
+  "description": "Live multi-device dart scoring with real-time sync, pairs events, and championship modes",
   "start_url": "./index.html",
   "scope": "./",
   "id": "popdarts-championship",
@@ -96,8 +96,15 @@
     {
       "name": "Quick Match",
       "short_name": "Quick",
-      "description": "Start a casual game",
+      "description": "Start a casual 1v1 game",
       "url": "./index.html?action=quick",
+      "icons": [{ "src": "./icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Pairs Match",
+      "short_name": "Pairs",
+      "description": "Launch a Special Event Pairs match",
+      "url": "./index.html?action=pairs",
       "icons": [{ "src": "./icon-96.png", "sizes": "96x96" }]
     }
   ]
