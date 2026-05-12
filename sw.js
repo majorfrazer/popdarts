@@ -1,5 +1,5 @@
-// PopDarts Service Worker v5.7
-const CACHE_NAME = 'popdarts-v57';
+// PopDarts Service Worker v5.8
+const CACHE_NAME = 'popdarts-v58';
 const ASSETS = [
   './',
   './index.html',
